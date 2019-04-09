@@ -1,38 +1,38 @@
 'use strict';
 // Задача №1
-// const ADMIN_PASSWORD = 'm4ng0h4ckz';
-// let message;
-// message = prompt('Авторизация администратора');
-// if (message === ADMIN_PASSWORD) {
-//   message = 'Добро пожаловать!';
-// } else if (message === null) {
-//   message = 'Отменено пользователем!';
-// } else {
-//   message = 'Доступ запрещен, неверный пароль!';
-// }
-// alert(message);
-// console.log(message);
+const ADMIN_PASSWORD = 'm4ng0h4ckz';
+let message;
+message = prompt('Авторизация администратора');
+if (message === ADMIN_PASSWORD) {
+  message = 'Добро пожаловать!';
+} else if (message === null) {
+  message = 'Отменено пользователем!';
+} else {
+  message = 'Доступ запрещен, неверный пароль!';
+}
+alert(message);
+console.log(message);
 // ====================================================
 // Задача №2
-// const credits = 23580;
-// const pricePerDroid = 3000;
-// let totalPrice;
-// let message;
-// message = prompt('Какое количество дроидов желаете приобрести?');
-// if (message === null) {
-//   message = 'Отменено пользователем!';
-// } else if (Number(message) * pricePerDroid > credits) {
-//   message = 'Недостаточно средств на счету!';
-// } else if ((totalPrice = credits - Number(message) * pricePerDroid)) {
-//   message =
-//     'Вы купили ' +
-//     message +
-//     ' дроидов, на счету осталось ' +
-//     totalPrice +
-//     ' кредитов.';
-// }
-// alert(message);
-// console.log(message);
+const credits = 23580;
+const pricePerDroid = 3000;
+let totalPrice;
+let message;
+message = prompt('Какое количество дроидов желаете приобрести?');
+if (message === null) {
+  message = 'Отменено пользователем!';
+} else if (Number(message) * pricePerDroid > credits) {
+  message = 'Недостаточно средств на счету!';
+} else if ((totalPrice = credits - Number(message) * pricePerDroid)) {
+  message =
+    'Вы купили ' +
+    message +
+    ' дроидов, на счету осталось ' +
+    totalPrice +
+    ' кредитов.';
+}
+alert(message);
+console.log(message);
 // ========================================================================
 // Задача №3
 let userCountry = prompt('Введите страну доставки');
