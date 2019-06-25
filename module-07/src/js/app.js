@@ -93,59 +93,59 @@ const getAllNames = users => {
 };
 console.log(getAllNames(users));
 
-// const getUsersByEyeColor = (users, color) => {
-//   return users.filter(user => {
-//     return user.eyeColor === color;
-//   });
-// };
-// console.log(getUsersByEyeColor(users, 'blue'));
+const getUsersByEyeColor = (users, color) => {
+  return users.filter(user => {
+    return user.eyeColor === color;
+  });
+};
+console.log(getUsersByEyeColor(users, 'blue'));
 
-// const getUsersByGender = (users, gender) => {
-//   return users
-//     .filter(user => {
-//       return user.gender === gender;
-//     })
-//     .map(user => {
-//       return user.name;
-//     });
-// };
-// console.log(getUsersByGender(users, 'male'));
+const getUsersByGender = (users, gender) => {
+  return users
+    .filter(user => {
+      return user.gender === gender;
+    })
+    .map(user => {
+      return user.name;
+    });
+};
+console.log(getUsersByGender(users, 'male'));
 
-// const getInactiveUsers = users => {
-//   return users.filter(user => {
-//     return !user.isActive;
-//   });
-// };
-// console.log(getInactiveUsers(users));
+const getInactiveUsers = users => {
+  return users.filter(user => {
+    return !user.isActive;
+  });
+};
+console.log(getInactiveUsers(users));
 
-// const getUserByEmail = (users, email) => {
-//   return users.find(user => {
-//     return user.email === email;
-//   });
-// };
-// console.log(getUserByEmail(users, 'shereeanthony@kog.com'));
-// console.log(getUserByEmail(users, 'elmahead@omatom.com'));
+const getUserByEmail = (users, email) => {
+  return users.find(user => {
+    return user.email === email;
+  });
+};
+console.log(getUserByEmail(users, 'shereeanthony@kog.com'));
+console.log(getUserByEmail(users, 'elmahead@omatom.com'));
 
-// const getUsersWithAge = (users, min, max) => {
-//   return users.filter(user => {
-//     return user.age > min && user.age < max;
-//   });
-// };
-// console.log(getUsersWithAge(users, 20, 30));
-// console.log(getUsersWithAge(users, 30, 40));
+const getUsersWithAge = (users, min, max) => {
+  return users.filter(user => {
+    return user.age > min && user.age < max;
+  });
+};
+console.log(getUsersWithAge(users, 20, 30));
+console.log(getUsersWithAge(users, 30, 40));
 
-// const getTotalBalance = users =>
-//   users.reduce((total, user) => total + user.balance, 0);
-// console.log(getTotalBalance(users));
+const getTotalBalance = users =>
+  users.reduce((total, user) => total + user.balance, 0);
+console.log(getTotalBalance(users));
 
-// const getUsersByFriend = (users, name) => {
-//   return users
-//     .filter(user => {
-//       return user.friends.includes(name);
-//     })
-//     .map(user => {
-//       return user.name;
-//     });
-// };
-// console.log(getUsersByFriend(users, 'Briana Decker'));
-// console.log(getUsersByFriend(users, 'Goldie Gentry'));
+const getUsersByFriend = (users, name) => {
+  return users
+    .filter(user => {
+      return user.friends.includes(name);
+    })
+    .map(user => {
+      return user.name;
+    });
+};
+console.log(getUsersByFriend(users, 'Briana Decker'));
+console.log(getUsersByFriend(users, 'Goldie Gentry'));
