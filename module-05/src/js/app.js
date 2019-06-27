@@ -9,7 +9,7 @@ Notepad.Priority = {
   HIGH: 2,
 };
 
-Notepad.prototype.getNotes(){
+Notepad.prototype.getNotes = function() {
   return this.notes;
 };
 
@@ -19,26 +19,22 @@ Notepad.prototype.saveNote = function(note) {
 };
 Notepad.prototype.findNoteById = function(id) {
   for (let i = 0; i < this.notes.length; i += 1) {
-    const product = this.notes[i];
-    if (product.id === id) {
+    if (this.notes[i].id === id) {
       return this.notes[i];
     }
   }
 };
 Notepad.prototype.updateNotePriority = function(id, priority) {
-  const findPriority = priority;
   for (let i = 0; i < this.notes.length; i += 1) {
-    const product = this.notes[i];
-    if (product.id === id) {
-      product.priority = findPriority;
-      return product;
+    if (this.notes[i].id === id) {
+      this.notes[i].priority = priority;
+      return this.notes[i];
     }
   }
 };
 Notepad.prototype.deleteNote = function(id) {
   for (let i = 0; i < this.notes.length; i += 1) {
-    const product = this.notes[i];
-    if (product.id === id) {
+    if (this.notes[i].id === id) {
       this.notes.splice(i, 1);
       return;
     }
@@ -46,32 +42,32 @@ Notepad.prototype.deleteNote = function(id) {
 };
 Notepad.prototype.updateNoteContent = function(id, updatedContent) {
   for (let i = 0; i < this.notes.length; i += 1) {
-    const product = this.notes[i];
-    if (product.id === id) {
-      product.title = updatedContent;
-      // product.body = updatedContent;
-      return product;
+    if (id === this.notes[i].id) {
+      this.notes[i] = { ...this.notes[i], ...updatedContent };
+      return this.notes;
     }
   }
 };
 Notepad.prototype.filterNotesByQuery = function(query) {
   const filtered = [];
-  const findString = query;
   for (const filter of this.notes) {
-    if (filter.title.includes(findString) || filter.body.includes(findString)) {
+    if (
+      filter.title.toLowerCase().includes(query.toLowerCase()) ||
+      filter.body.toLowerCase().includes(query.toLowerCase())
+    ) {
       filtered.push(filter);
+      return filtered;
     }
   }
-  return filtered;
 };
 Notepad.prototype.filterNotesByPriority = function(priority) {
   const filtered = [];
   for (const filter of this.notes) {
     if (filter.priority === priority) {
       filtered.push(filter);
+      return filtered;
     }
   }
-  return filtered;
 };
 
 // ===================================================================================
@@ -167,7 +163,10 @@ notepad.updateNoteContent('id-3', {
   title: 'Get comfy with React.js or Vue.js',
 });
 
-console.log('Заметки после обновления контента заметки с id-3: ', notepad.getNotes());
+console.log(
+  'Заметки после обновления контента заметки с id-3: ',
+  notepad.getNotes(),
+);
 
 // /*
 //  * Повторил HTML и CSS, удаляю запись c id-2

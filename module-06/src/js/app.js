@@ -17,26 +17,22 @@ class Notepad {
   }
   findNoteById(id) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
+      if (this.notes[i].id === id) {
         return this.notes[i];
       }
     }
   }
   updateNotePriority(id, priority) {
-    const findPriority = priority;
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
-        product.priority = findPriority;
-        return product;
+      if (this.notes[i].id === id) {
+        this.notes[i].priority = priority;
+        return this.notes[i];
       }
     }
   }
   deleteNote(id) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
+      if (this.notes[i].id === id) {
         this.notes.splice(i, 1);
         return;
       }
@@ -44,34 +40,32 @@ class Notepad {
   }
   updateNoteContent = function(id, updatedContent) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
-        product.title = updatedContent;
-        return product;
+      if (id === this.notes[i].id) {
+        this.notes[i] = { ...this.notes[i], ...updatedContent };
+        return this.notes;
       }
     }
   };
   filterNotesByQuery = function(query) {
     const filtered = [];
-    const findString = query;
     for (const filter of this.notes) {
       if (
-        filter.title.includes(findString) ||
-        filter.body.includes(findString)
+        filter.title.toLowerCase().includes(query.toLowerCase()) ||
+        filter.body.toLowerCase().includes(query.toLowerCase())
       ) {
         filtered.push(filter);
+        return filtered;
       }
     }
-    return filtered;
   };
   filterNotesByPriority = function(priority) {
     const filtered = [];
     for (const filter of this.notes) {
       if (filter.priority === priority) {
         filtered.push(filter);
+        return filtered;
       }
     }
-    return filtered;
   };
 }
 // ===========================================================================

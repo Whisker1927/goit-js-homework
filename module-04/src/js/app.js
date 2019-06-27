@@ -33,8 +33,7 @@ const notepad = {
   },
   findNoteById(id) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
+      if (this.notes[i] === id) {
         return this.notes[i];
       }
     }
@@ -45,8 +44,7 @@ const notepad = {
   },
   deleteNote(id) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
+      if (this.notes[i].id === id) {
         this.notes.splice(i, 1);
         return;
       }
@@ -54,19 +52,17 @@ const notepad = {
   },
   updateNoteContent(id, updatedContent) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-        if (product.id === id) {
-          product.title  = updatedContent;
-          return product;
+      if (id === this.notes[i].id) {
+         this.notes[i] = { ...this.notes[i], ...updatedContent };
+         return this.notes;
       }
     }
   },
   updateNotePriority(id, priority) {
     for (let i = 0; i < this.notes.length; i += 1) {
-      const product = this.notes[i];
-      if (product.id === id) {
-        product.priority = priority;
-        return product;
+      if (this.notes[i].id === id) {
+        this.notes[i].priority = priority;
+        return this.notes[i];
       }
     }
   },
@@ -78,24 +74,22 @@ const notepad = {
         filter.body.toLowerCase().includes(query.toLowerCase())
       ) {
         filtered.push(filter);
+        return filtered;
       }
     }
-    return filtered;
   },
   filterNotesByPriority(priority) {
     const filtered = [];
     for (const filter of this.notes) {
       if (filter.priority === priority) {
         filtered.push(filter);
+        return filtered;
       }
     }
-    return filtered;
   },
 };
 
 // ===================================================================================
-console.table(notepad.getNotes());
-
 /*
  * Добавляю 4 заметки и смотрю что получилось
  */
