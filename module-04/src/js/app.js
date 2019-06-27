@@ -55,29 +55,27 @@ const notepad = {
   updateNoteContent(id, updatedContent) {
     for (let i = 0; i < this.notes.length; i += 1) {
       const product = this.notes[i];
-      if (product.id === id) {
-        product.title = updatedContent;
-        return product;
+        if (product.id === id) {
+          product.title  = updatedContent;
+          return product;
       }
     }
   },
   updateNotePriority(id, priority) {
-    const findPriority = priority;
     for (let i = 0; i < this.notes.length; i += 1) {
       const product = this.notes[i];
       if (product.id === id) {
-        product.priority = findPriority;
+        product.priority = priority;
         return product;
       }
     }
   },
   filterNotesByQuery(query) {
     const filtered = [];
-    const findString = query;
     for (const filter of this.notes) {
       if (
-        filter.title.includes(findString) ||
-        filter.body.includes(findString)
+        filter.title.toLowerCase().includes(query.toLowerCase()) ||
+        filter.body.toLowerCase().includes(query.toLowerCase())
       ) {
         filtered.push(filter);
       }
@@ -86,9 +84,8 @@ const notepad = {
   },
   filterNotesByPriority(priority) {
     const filtered = [];
-    const findPriority = priority;
     for (const filter of this.notes) {
-      if (filter.priority === findPriority) {
+      if (filter.priority === priority) {
         filtered.push(filter);
       }
     }
@@ -169,7 +166,7 @@ console.log(
  */
 console.log(
   'Отфильтровали заметки по ключевому слову "javascript": ',
-  notepad.filterNotesByQuery('JavaScript'),
+  notepad.filterNotesByQuery('javascript'),
 );
 
 /*

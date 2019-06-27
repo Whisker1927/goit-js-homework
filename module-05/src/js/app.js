@@ -9,6 +9,10 @@ Notepad.Priority = {
   HIGH: 2,
 };
 
+Notepad.prototype.getNotes(){
+  return this.notes;
+};
+
 Notepad.prototype.saveNote = function(note) {
   this.notes.push(note);
   return note;
@@ -45,6 +49,7 @@ Notepad.prototype.updateNoteContent = function(id, updatedContent) {
     const product = this.notes[i];
     if (product.id === id) {
       product.title = updatedContent;
+      // product.body = updatedContent;
       return product;
     }
   }
@@ -68,14 +73,6 @@ Notepad.prototype.filterNotesByPriority = function(priority) {
   }
   return filtered;
 };
-
-// const notepadA = new Notepad();
-
-// notepadA.saveNote({
-//   getNotes() {
-//     return this.notes;
-//   },
-// });
 
 // ===================================================================================
 
@@ -121,7 +118,7 @@ notepad.saveNote({
   priority: Notepad.Priority.LOW,
 });
 
-console.log('Все текущие заметки: ', notepad);
+console.log('Все текущие заметки: ', notepad.getNotes());
 
 // /*
 //  * Зима уже близко, пора поднять приоритет на покупку одежды
@@ -170,7 +167,7 @@ notepad.updateNoteContent('id-3', {
   title: 'Get comfy with React.js or Vue.js',
 });
 
-console.log('Заметки после обновления контента заметки с id-3: ', notepad);
+console.log('Заметки после обновления контента заметки с id-3: ', notepad.getNotes());
 
 // /*
 //  * Повторил HTML и CSS, удаляю запись c id-2
