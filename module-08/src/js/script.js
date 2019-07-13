@@ -1,54 +1,59 @@
+'use strict';
 import quizData from './app.js';
-console.log(quizData);
+const form = document.querySelector('.form-control');
+const trueAnswers = quizData.questions.map(question=>question.answer);
+const markup = quizData.questions
+  .map((question, index) => renderListQestion(index, question))
+  .join('');
+form.insertAdjacentHTML("afterbegin",markup );
+form.addEventListener('submit', handleFormSubmit);
 
-const container = document.querySelector('.overlay');
-const profile = renderTestList(quizData);
-console.log(quizData.questions);
-
-function renderTestList(notes) {
-  const field1 = createQuestionList(
-    quizData.questions.map(ques => {
-      return ques.question;
-    }).map(question => )
-  );
-  // const field2 = createQuestionList(notes);
-  // const field3 = createQuestionList(notes);
-  // const field4 = createQuestionList(notes);
-  // const field5 = createQuestionList(notes);
-  // const field6 = createQuestionList(notes);
-  container.prepend(field1);
-  //   field2, field3);
-  // //  field4, field5, field6);
-  return container;
+function renderListQestion(index, { question, choices }) {
+  const markup = `<section>
+  <h3>${index + 1}. ${question} </h3>
+  <ol> ${choices
+    .map(
+      (choice, idx) => `  <li>
+      <label>
+        <input type="radio" name="q_${index}" value="${idx}" />
+        ${choice}
+      </label>
+    </li>`
+    )
+    .join('')}
+  </ol>
+</section>`;
+  return markup;
 }
-console.log(renderTestList());
 
-function createQuestionList(note) {
-  const sectionItem = document.createElement('section');
-  const caption = document.createElement('h3');
-  caption.textContent = note;
-  const list = document.createElement('ol');
-  sectionItem.append(caption, list);
-  const item = createAnswerItem();
-  list.append(item);
-  const item1 = createAnswerItem();
-  list.append(item1);
-  const item2 = createAnswerItem();
-  list.append(item2);
+function handleFormSubmit(e){
+    e.preventDefault();
+    
+    const userAnswers = [];
+    const formData = new FormData(e.currentTarget);
+    formData.forEach(( value)=>{
+      userAnswers.push(Number(value));
+    });
+      const chekedAnswer = [];
+     userAnswers.forEach((answer, idx)=>{
+      chekedAnswer.push({
+        answer,
+        passed: answer === trueAnswers[idx]
+      })
+     })
 
-  return sectionItem;
+    const amountCorrectAnswer =  chekedAnswer.reduce((acc, answer)=> {
+       if(answer.passed){
+         return acc +1;
+       }
+        return acc;
+     },0)
+
+     if(amountCorrectAnswer/userAnswers.length >= 0.8){
+       alert('Сongratulations!!! You passed the test')
+     }
+     else{
+       alert('You answered incorrectly. Try again.')
+     }
 }
-console.log(createQuestionList());
-function createAnswerItem() {
-  const item = document.createElement('li');
-  const labelItem = document.createElement('label');
-  item.append(labelItem);
-  const inputItem = document.createElement('input');
-  inputItem.type = 'radio';
-  inputItem.name = 'choice';
-  inputItem.value = 'answer';
 
-  labelItem.append(inputItem);
-
-  return item;
-}
