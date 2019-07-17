@@ -1,0 +1,25 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4"
+  },
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "author": "Vladyslav_Bezkrylyi <whisker1927@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Whisker1927/goit-js-homework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Whisker1927/goit-js-homework/issues"
+  },
+  "homepage": "https://github.com/Whisker1927/goit-js-homework#readme",
+  "description": ""
+}
