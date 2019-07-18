@@ -14,17 +14,27 @@ const refs = {
 const markup = postFeedItem(posts);
 refs.menuList.insertAdjacentHTML('beforeend', markup);
 
-const savedSettings = localStorage.getItem('Theme');
+// const savedSettings = localStorage.getItem('Theme');
+const savedSettings = JSON.parse(localStorage.getItem('Theme'));
 themeAfterUpdate(savedSettings);
 function themeAfterUpdate(notes) {
-  if (notes.includes(Theme.DARK)) {
+  if (notes && notes.includes(Theme.DARK)) {
     refs.checkbox.checked = true;
     darkTheme();
-  } else if (notes.includes(Theme.LIGHT)) {
+  } else {
     refs.checkbox.checked = false;
     lightTheme();
   }
 }
+// function themeAfterUpdate(notes) {
+//   if (notes.includes(Theme.DARK)) {
+//     refs.checkbox.checked = true;
+//     darkTheme();
+//   } else if (notes.includes(Theme.LIGHT)) {
+//     refs.checkbox.checked = false;
+//     lightTheme();
+//   }
+// }
 
 refs.checkbox.addEventListener('change', e => {
   if (e.target.checked === true) {
