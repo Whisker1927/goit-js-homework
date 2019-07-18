@@ -3,7 +3,7 @@ import quizData from './app.js';
 const form = document.querySelector('.form-control');
 const overlay = document.querySelector('.overlay');
 const headline = document.createElement('h2');
-headline.textContent = quizData.title;т
+headline.textContent = quizData.title;
 overlay.prepend(headline);
 const trueAnswers = quizData.questions.map(question=>question.answer);
 const markup = quizData.questions
