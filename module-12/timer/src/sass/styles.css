@@ -1,0 +1,21 @@
+/*
+   Import partials below
+*/
+@import './normalize';
+
+.timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.value {
+    font-size: 40px;
+}
+
+.label {
+    display: block;
+    text-align: center;
+    color: #616161;
+}
